@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function () {
     let lockBoard = false;
     let cards = [];
 
+
+
     // DOM Elements for Pause/Resume buttons
     const pauseButton = document.getElementById('pauseButton');
     const resumeButton = document.getElementById('resumeButton')
@@ -28,6 +30,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Event listener to resume the game
     resumeButton.addEventListener('click', resumeGame);
+
+    // Add an event listener to the Restart button
+    const restartButton = document.getElementById('restartButton');
+    restartButton.addEventListener('click', restartGame);
+
 
     // Function to start the timer (increments every second)
     function startTimer() {
@@ -65,6 +72,33 @@ document.addEventListener('DOMContentLoaded', function () {
         pauseButton.disabled = false; // Enable the pause button
         resumeButton.disabled = true; // Disable the resume button
         lockBoard = false; // Unlock the board for interactions
+    }
+
+    // Function to restart the game
+    function restartGame() {
+        // Reset all game variables
+        score = 0;
+        level = 1;
+        matchedCards = 0;
+        lockBoard = false;
+
+        // Update the scoreboard
+        const scoreboardElement = document.getElementById('scoreboard');
+        if (scoreboardElement) {
+            scoreboardElement.textContent = `Score: ${score}`;
+        }
+
+        // Reset timer
+        resetTimer();
+
+        // Clear + reset board to level 1
+        startLevel(8, 'level1');
+
+        // Enable the pause button and disable resume button in case they're in the wrong state
+        pauseButton.disabled = false;
+        resumeButton.disabled = true;
+
+        console.log('Game has been restarted!');
     }
 
     // Function to shuffle the card array (to randomize card positions)
@@ -169,9 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to calculate and update score
     function calculateScore() {
-        const levelMultiplier = level * 100; // Higher levels give more points
-        const timePenalty = time * 2; // Adjust time penalty to be less severe
-        const pointsEarned = Math.max(0, levelMultiplier - timePenalty); // Calculate points for this level
+        const levelMultiplier = (level * 100) + 10; // Higher levels give more points
+        const timePenalty = time; // Adjust time penalty to be less severe
+        const pointsEarned = Math.max(10, levelMultiplier - timePenalty); // Calculate points for this level
 
         score += pointsEarned; // Add points earned for this level to the total score
 
