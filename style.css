@@ -1,0 +1,59 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Timer styling */
+#timer {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Game board styling */
+.game-board {
+    display: grid;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Levels: control the grid layout based on the level */
+.game-board.level1 {
+    grid-template-columns: repeat(4, 100px);
+    /* 4x4 grid for level 1 */
+}
+
+.game-board.level2 {
+    grid-template-columns: repeat(5, 100px);
+    /* 5x4 grid for level 2 */
+}
+
+.game-board.level3 {
+    grid-template-columns: repeat(6, 100px);
+    /* 6x6 grid for level 3 */
+}
+
+/* Styling for each card */
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: #AAA1C8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for flipped cards */
+.flipped {
+    background-color: #AAA1C8;
+    cursor: default;
+}
