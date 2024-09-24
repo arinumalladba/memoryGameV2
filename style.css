@@ -57,3 +57,10 @@ body {
     background-color: #AAA1C8;
     cursor: default;
 }
+
+#restartButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
