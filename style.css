@@ -19,6 +19,7 @@ body {
     gap: 10px;
     justify-content: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Levels: control the grid layout based on the level */
